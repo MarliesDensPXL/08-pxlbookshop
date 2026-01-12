@@ -119,18 +119,17 @@ namespace PxlBookShop
             Console.WriteLine();
             Console.WriteLine("Persoonlijke gegevens");
             Console.WriteLine("---------------------");
+
             int studentNumber;
             do
             {
                 Console.Write("Studentnummer: ");
-            } while (!int.TryParse(Console.ReadLine(), out studentNumber) || studentNumber.ToString().Length != 8);
+            } while (!int.TryParse(Console.ReadLine(), out studentNumber));
 
             string email;
-            do
-            {
-                Console.Write("E-mailadres: ");
-                email = Console.ReadLine();
-            } while (!email.EndsWith("@student.pxl.be")); //TODO:
+            Console.Write("E-mailadres: ");
+            email = Console.ReadLine();
+
             Console.WriteLine();
             Console.WriteLine("Druk op enter om verder te gaan...");
             Console.ReadLine();
@@ -149,25 +148,26 @@ namespace PxlBookShop
             Console.WriteLine($"Cursussen voor de opleiding {selectedCourse.Name}:\n");
             for(int b = 0; b < books.Count; b++)
             {
-                Console.WriteLine($"\t- {books[b].ToString()}"); //TODO: haakjes tostring
+                Console.WriteLine($"\t- {books[b].ToString}"); 
             }
             Console.WriteLine();
             Console.WriteLine("Druk op enter om deze boeken nu te bestellen\nof druk op een andere toets om te annuleren.");
 
-            if(Console.ReadKey(true).Key == ConsoleKey.Enter)
+            if(Console.ReadKey(true).Key == "Enter") 
+            { 
+            
+            foreach (Book book in books)
             {
-                foreach (Book book in books)
-                {
-                    order.AddBook(book);
-                }
-
-                Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine("Je bestelling werd succesvol geregistreerd.");
-                Console.WriteLine($"Er werd een bevestigingsmail verstuurd naar {order.Email}.");
-                Console.WriteLine($"Gelieve het bedrag van {order.CalculateTotalAmount():c} te betalen om de bestelling definitief te maken.");
-                Console.ResetColor();
-                Console.WriteLine();
+                order.AddBook(book);
             }
+
+            Console.ForegroundColor(ConsoleColor.Green);
+            Console.WriteLine("Je bestelling werd succesvol geregistreerd.");
+            Console.WriteLine($"Er werd een bevestigingsmail verstuurd naar {order.Email}.");
+            Console.WriteLine($"Gelieve het bedrag van {order.CalculateTotalAmount()} te betalen om de bestelling definitief te maken.");
+            Console.ResetColor();
+            Console.WriteLine();
+            
             else
             {
                 Console.ForegroundColor = ConsoleColor.Red;
@@ -185,19 +185,19 @@ namespace PxlBookShop
         {
             Console.WriteLine("Selecteer je departement:\n");
 
-            for (int d = 0; d <= _departments.Count - 1; d++) //TODO: d = 1; d > departments.count
+            for (int d = 1; d < _departments.Count - 1; d++) 
             {
-                Console.WriteLine($"{d+1,2}: {_departments[d].Name}"); //TODO: $ verwijderen
+                Console.WriteLine("{d,2}: {_departments[d].Name}"); 
             }
             Console.WriteLine();
             int index = -1;
             do
             {
                 Console.Write("Geef het nummer van je departement: ");
-            } while(!int.TryParse(Console.ReadLine(), out index) || index < 1 || index > _departments.Count);
+            } while(!int.TryParse(Console.ReadLine(), out index));
             Console.Clear();
 
-            return _departments[index - 1]; //TODO: -1 verwijderen
+            return _departments[index]; 
         }
 
         private static Course SelectCourse(Department department)
@@ -220,10 +220,10 @@ namespace PxlBookShop
             do
             {
                 Console.Write("Geef het id van je opleiding: ");
-            } while (!int.TryParse(Console.ReadLine(), out id) || !department.Courses.Any(c => c.Id == id)); //TODO remove any
+            } while (!int.TryParse(Console.ReadLine(), out id)); 
             Console.Clear();
 
-            return department.Courses.Find(c => c.Id == id);
+            return _departments[0].Courses.Find(c => c.Id == id);
         }
     }
 }

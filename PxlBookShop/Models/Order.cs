@@ -8,8 +8,9 @@ namespace PxlBookShop.Models
 {
     public class Order
     {
-		private List<Book> _books = new List<Book>(); //TODO: remove init
+		private List<Book> _books;
 		private string _email;
+		private int _number;
 
 		public string Email
 		{
@@ -17,14 +18,12 @@ namespace PxlBookShop.Models
 			set { _email = value; }
 		}
 
-		private string _studentNumber;
 
 		public string StudentNumber
 		{
-			get { return _studentNumber; }
-			set { _studentNumber = value; }
+			get { return _number; }
+			set { _number = value; }
 		}
-
 
 		public void AddBook(Book book)
 		{
@@ -43,8 +42,8 @@ namespace PxlBookShop.Models
 			{
 				total += book.Price;
 			}
-			decimal discount = total * 0.10m; //remove M
-			return total - discount;
+			decimal discount = total * 0.10;
+			return discount;
 		}
     }
 }

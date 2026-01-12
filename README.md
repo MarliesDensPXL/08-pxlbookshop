@@ -34,44 +34,53 @@ Om een correct beeld te schetsen geven we nog even een kort overzicht van de ori
 ### BUG02
 - **Fout**: Gebruikersgegevens wordt niet gevalideerd
 - **Doel**: Zorg ervoor dat een studentnummer exact 8 cijfers bevat en een e-mailadres altijd eindigt op `@student.pxl.be`. Vraag de input telkens opnieuw zolang de validatie mislukt.
-![bug02](./images/validatie.png)
+![bug02](./images/fix02.png)
 
 ### BUG03
 - **Fout**: De departementen worden niet en/of foutief getoond
-- **Doel**: Toon alle departementen voorafgegaan door een volgnummer dat begint met 1. De variabele `_departments` bevat een lijst met alle departementen
-![bug03](./images/selectdepartment.png)
+![bug03](./images/bug03.png)
+- **Doel**: Toon alle departementen voorafgegaan door een volgnummer dat begint met 1. 
+![fix03](./images/fix03.png)
+TIP: De variabele `_departments` bevat een lijst met alle departementen
 
 ### BUG04
 - **Fout**: Bij een foutieve selectie van het departement crasht de applicatie
+![bug04](./images/bug04-1.png)
+![bug04](./images/bug04-2.png)
 - **Doel**: Zorg ervoor dat de applicatie enkele geldige volgnummers accepteert.
-![bug04](./images/selectdepartment-input.png)
+![fix04](./images/fix04.png)
 
 ### BUG05
 - **Fout**: De getoonde opleidingen zijn niet de opleidingen van het gekozen departement
+![bug05](./images/bug05.png)
 - **Doel**: Toon de opleidingen (`Courses`) van het geselecteerde departement 
-![bug05](./images/selectcourse.png)
+![bug05](./images/fix05.png)
 
 ### BUG06
 - **Fout**: Bij de ingave van een ongeldig id crasht de applicatie
+![bug06](./images/bug06.png)
 - **Doel**: Zorg ervoor dat de applicatie enkele geldige id's accepteert.
-![bug06](./images/selectcourse-input.png)
+![fix06](./images/fix06.png)
 
 ### BUG07
 - **Fout**: De lijst van handboeken wordt foutief weergegeven
-- **Doel**: Zorg ervoor dat voor elke boek de titel en autheur wordt weergegeven
-![bug07](./images/books.png)
+![bug07](./images/bug07.png)
+- **Doel**: Zorg ervoor dat voor elk boek de titel en autheur wordt weergegeven
+![fix07](./images/fix07.png)
 
 ### BUG08
 - **Fout**: Bij het bevestigen van een bestelling crasht de applicatie
+![bug08](./images/bug08.png)
 - **Doel**: Voorkom eventuele fouten indien mogelijk of zorg ervoor dat deze correct worden afgehandeld
 
 ### BUG09
 - **Fout**: Bij het bevestigen van een bestelling wordt het bedrag niet correct weergegeven
+![bug09](./images/bug09.png)
 - **Doel**: Toon het bedrag steeds in de lokale munteenheid met 2 cijfers na de komma
 
 ### BUG10
 - **Fout**: Het weergegeven bedrag wordt niet correct berekend
-![bug10](./images/amount.png)
+![bug10](./images/bug10.png)
 - **Doel**: Bereken het te betalen bedrag door het totaal te bepalen en dit te verminderen met 10%
-![fix10](./images/confirm.png)
+![fix10](./images/fix10.png)
 
