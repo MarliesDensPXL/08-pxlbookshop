@@ -38,12 +38,13 @@ namespace PxlBookShop.Models
 
 		public decimal CalculateTotalAmount()
 		{
-			decimal sum = 0;
+			decimal total = 0;
 			foreach (Book book in _books)
 			{
-				sum += book.Price;
+				total += book.Price;
 			}
-			return sum;
+			decimal discount = total * 0.10m; //remove M
+			return total - discount;
 		}
     }
 }

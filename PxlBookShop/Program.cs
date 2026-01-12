@@ -123,9 +123,14 @@ namespace PxlBookShop
             do
             {
                 Console.Write("Studentnummer: ");
-            } while (!int.TryParse(Console.ReadLine(), out studentNumber));
-            Console.Write("E-mailadres: ");
-            string email = Console.ReadLine();
+            } while (!int.TryParse(Console.ReadLine(), out studentNumber) || studentNumber.ToString().Length != 8);
+
+            string email;
+            do
+            {
+                Console.Write("E-mailadres: ");
+                email = Console.ReadLine();
+            } while (!email.EndsWith("@student.pxl.be")); //TODO:
             Console.WriteLine();
             Console.WriteLine("Druk op enter om verder te gaan...");
             Console.ReadLine();
@@ -144,7 +149,7 @@ namespace PxlBookShop
             Console.WriteLine($"Cursussen voor de opleiding {selectedCourse.Name}:\n");
             for(int b = 0; b < books.Count; b++)
             {
-                Console.WriteLine($"\t- {books[b].Title} ({books[b].Author})");
+                Console.WriteLine($"\t- {books[b].ToString()}"); //TODO: haakjes tostring
             }
             Console.WriteLine();
             Console.WriteLine("Druk op enter om deze boeken nu te bestellen\nof druk op een andere toets om te annuleren.");
@@ -205,7 +210,7 @@ namespace PxlBookShop
 
             Console.WriteLine("  Id | Opleiding");
             Console.WriteLine($"---- + --------------------");
-            foreach (Course course in department.Courses)
+            foreach (Course course in _departments[0].Courses)
             {
                 Console.WriteLine($"{course.Id,4} | {course.Name}");
             }
@@ -219,11 +224,6 @@ namespace PxlBookShop
             Console.Clear();
 
             return department.Courses.Find(c => c.Id == id);
-        }
-
-        private static void PrintOrderSummary(Order order)
-        {
-
         }
     }
 }

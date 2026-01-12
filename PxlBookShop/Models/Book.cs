@@ -19,5 +19,9 @@ namespace PxlBookShop.Models
         public string Author { get; set; }
         public decimal Price { get; set; }
 
+        public override string ToString()
+        {
+            return $"{this.Title} ({this.Author})";
+        }
     }
 }
