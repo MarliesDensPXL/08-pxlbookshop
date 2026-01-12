@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36717.8 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PxlBookShop", "PxlBookShop\PxlBookShop.csproj", "{37590112-7BAD-44AC-99BF-8974F48BC40C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{37590112-7BAD-44AC-99BF-8974F48BC40C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37590112-7BAD-44AC-99BF-8974F48BC40C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37590112-7BAD-44AC-99BF-8974F48BC40C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37590112-7BAD-44AC-99BF-8974F48BC40C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9CB7F746-5F80-4887-972F-B925D58353FC}
+	EndGlobalSection
+EndGlobal
