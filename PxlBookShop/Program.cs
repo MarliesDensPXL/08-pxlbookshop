@@ -121,14 +121,22 @@ namespace PxlBookShop
             Console.WriteLine("---------------------");
 
             int studentNumber;
+            string studentNumberInput;
+
             do
             {
                 Console.Write("Studentnummer: ");
-            } while (!int.TryParse(Console.ReadLine(), out studentNumber));
+                studentNumberInput = Console.ReadLine();   
+
+            } while (!int.TryParse(studentNumberInput, out studentNumber) || (studentNumberInput.Length != 8));
 
             string email;
-            Console.Write("E-mailadres: ");
-            email = Console.ReadLine();
+            do
+            {
+                Console.Write("E-mailadres: ");
+                email = Console.ReadLine();
+            } while (!email.EndsWith("@student.pxl.be")); 
+            
 
             Console.WriteLine();
             Console.WriteLine("Druk op enter om verder te gaan...");
