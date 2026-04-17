@@ -137,7 +137,6 @@ namespace PxlBookShop
                 email = Console.ReadLine();
             } while (!email.EndsWith("@student.pxl.be")); 
             
-
             Console.WriteLine();
             Console.WriteLine("Druk op enter om verder te gaan...");
             Console.ReadLine();
@@ -196,9 +195,9 @@ namespace PxlBookShop
         {
             Console.WriteLine("Selecteer je departement:\n");
 
-            for (int d = 1; d < _departments.Count - 1; d++) 
+            for (int d = 0; d < _departments.Count; d++) 
             {
-                Console.WriteLine("{d,2}: {_departments[d].Name}"); 
+                Console.WriteLine($"{d+1}: {_departments[d].Name}"); 
             }
             Console.WriteLine();
             int index = -1;
