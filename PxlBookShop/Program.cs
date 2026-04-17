@@ -137,37 +137,39 @@ namespace PxlBookShop
 
             Order order = new Order();
             order.Email = email;
-            order.StudentNumber = studentNumber.ToString();
+            order.StudentNumber = studentNumber;
 
-            Department selectedDepartment = SelectDepartment(); 
+            Department selectedDepartment = SelectDepartment();
 
             Course selectedCourse = SelectCourse(selectedDepartment);
 
             List<Book> books = _books[selectedCourse.Id];
 
             Console.WriteLine($"Cursussen voor de opleiding {selectedCourse.Name}:\n");
-            for(int b = 0; b < books.Count; b++)
+            for (int b = 0; b < books.Count; b++)
             {
-                Console.WriteLine($"\t- {books[b].ToString}"); 
-            }
+                Console.WriteLine($"\t- {books[b].ToString}");
+            } 
             Console.WriteLine();
             Console.WriteLine("Druk op enter om deze boeken nu te bestellen\nof druk op een andere toets om te annuleren.");
 
-            if(Console.ReadKey(true).Key == "Enter") 
-            { 
-            
-            foreach (Book book in books)
+            if (Console.ReadKey(true).Key == ConsoleKey.Enter)
             {
-                order.AddBook(book);
+
+                foreach (Book book in books)
+                {
+                    order.AddBook(book);
+                }
+
+                Console.ForegroundColor= ConsoleColor.Green;
+                Console.WriteLine("Je bestelling werd succesvol geregistreerd.");
+                Console.WriteLine($"Er werd een bevestigingsmail verstuurd naar {order.Email}.");
+                Console.WriteLine($"Gelieve het bedrag van {order.CalculateTotalAmount()} te betalen om de bestelling definitief te maken.");
+                Console.ResetColor();
+                Console.WriteLine();
             }
 
-            Console.ForegroundColor(ConsoleColor.Green);
-            Console.WriteLine("Je bestelling werd succesvol geregistreerd.");
-            Console.WriteLine($"Er werd een bevestigingsmail verstuurd naar {order.Email}.");
-            Console.WriteLine($"Gelieve het bedrag van {order.CalculateTotalAmount()} te betalen om de bestelling definitief te maken.");
-            Console.ResetColor();
-            Console.WriteLine();
-            
+
             else
             {
                 Console.ForegroundColor = ConsoleColor.Red;
@@ -177,9 +179,10 @@ namespace PxlBookShop
             }
 
 
-            Console.WriteLine("De applicatie wordt nu afgesloten...");
-            Console.ReadLine();
+                Console.WriteLine("De applicatie wordt nu afgesloten...");
+                Console.ReadLine();
         }
+        
 
         private static Department SelectDepartment()
         {
