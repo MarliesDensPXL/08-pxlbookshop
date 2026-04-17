@@ -176,7 +176,6 @@ namespace PxlBookShop
                 Console.WriteLine();
             }
 
-
             else
             {
                 Console.ForegroundColor = ConsoleColor.Red;
@@ -197,17 +196,18 @@ namespace PxlBookShop
 
             for (int d = 0; d < _departments.Count; d++) 
             {
-                Console.WriteLine($"{d+1}: {_departments[d].Name}"); 
+                Console.WriteLine($"{d+1, 2}: {_departments[d].Name}"); 
             }
             Console.WriteLine();
+
             int index = -1;
             do
             {
                 Console.Write("Geef het nummer van je departement: ");
-            } while(!int.TryParse(Console.ReadLine(), out index));
+            } while(!int.TryParse(Console.ReadLine(), out index) || index > _departments.Count );
             Console.Clear();
 
-            return _departments[index]; 
+            return _departments[index-1]; 
         }
 
         private static Course SelectCourse(Department department)
