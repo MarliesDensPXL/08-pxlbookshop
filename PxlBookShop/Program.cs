@@ -13,7 +13,7 @@ namespace PxlBookShop
                 Name = "PXL Education",
                 Courses = new List<Course>()
                 {
-                    new Course(11, "Bachelor Kleuter Onderwijs"),
+                    new Course(11, "Bachelor Kleuteronderwijs"),
                     new Course(13, "Bachelor Lager Onderwijs"),
                     new Course(14, "Bachelor Secundair Onderwijs")
                 }
@@ -220,11 +220,11 @@ namespace PxlBookShop
 
             Console.WriteLine("  Id | Opleiding");
             Console.WriteLine($"---- + --------------------");
-            foreach (Course course in _departments[0].Courses)
+            foreach (Course course in _departments[_departments.IndexOf(department)].Courses) //[0] vervangen door _departments.IndexOf(department) anders toont applicatie altijd de cursussen uit department op positie 0
             {
                 Console.WriteLine($"{course.Id,4} | {course.Name}");
             }
-            Console.WriteLine();
+            Console.WriteLine(); 
 
             int id;
             do
