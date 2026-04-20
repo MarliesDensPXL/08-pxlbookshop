@@ -19,7 +19,7 @@ namespace PxlBookShop.Models
 		}
 
 
-		public string StudentNumber
+		public int StudentNumber
 		{
 			get { return _number; }
 			set { _number = value; }
@@ -42,7 +42,7 @@ namespace PxlBookShop.Models
 			{
 				total += book.Price;
 			}
-			decimal discount = total * 0.10;
+			decimal discount = total * 0.10m;
 			return discount;
 		}
     }

@@ -1,4 +1,5 @@
 ﻿using PxlBookShop.Models;
+using System.Collections.Generic;
 using System.Xml.Linq;
 
 namespace PxlBookShop
@@ -220,20 +221,24 @@ namespace PxlBookShop
 
             Console.WriteLine("  Id | Opleiding");
             Console.WriteLine($"---- + --------------------");
-            foreach (Course course in _departments[_departments.IndexOf(department)].Courses) //[0] vervangen door _departments.IndexOf(department) anders toont applicatie altijd de cursussen uit department op positie 0
+            foreach (Course course in department.Courses)
+                //(Course course in _departments[_departments.IndexOf(department)].Courses) //[0] vervangen door _departments.IndexOf(department) anders toont applicatie altijd de cursussen uit department op positie 0
             {
                 Console.WriteLine($"{course.Id,4} | {course.Name}");
             }
             Console.WriteLine(); 
 
             int id;
+            
             do
             {
                 Console.Write("Geef het id van je opleiding: ");
-            } while (!int.TryParse(Console.ReadLine(), out id)); 
+            } while (!int.TryParse(Console.ReadLine(), out id)); department.Courses.Find(c => c.Id != id);        //TODO uitzoeken hoe dit werkt. Geen idee hoe ik id uit de cursus moet halen om te vergelijken met ingave van de gebruiker.
+
+
             Console.Clear();
 
-            return _departments[0].Courses.Find(c => c.Id == id);
+            return department.Courses.Find(c => c.Id == id);
         }
     }
 }
