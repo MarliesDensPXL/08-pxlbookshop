@@ -156,7 +156,7 @@ namespace PxlBookShop
             Console.WriteLine($"Cursussen voor de opleiding {selectedCourse.Name}:\n");
             for (int b = 0; b < books.Count; b++)
             {
-                Console.WriteLine($"\t- {books[b].ToString}");
+                Console.WriteLine($"\t- {books[b].ToString()}");
             } 
             Console.WriteLine();
             Console.WriteLine("Druk op enter om deze boeken nu te bestellen\nof druk op een andere toets om te annuleren.");
@@ -226,17 +226,21 @@ namespace PxlBookShop
             {
                 Console.WriteLine($"{course.Id,4} | {course.Name}");
             }
-            Console.WriteLine(); 
+            Console.WriteLine();
 
+            string input;
             int id;
             
             do
             {
                 Console.Write("Geef het id van je opleiding: ");
-            } while (!int.TryParse(Console.ReadLine(), out id)); department.Courses.Find(c => c.Id != id);        //TODO uitzoeken hoe dit werkt. Geen idee hoe ik id uit de cursus moet halen om te vergelijken met ingave van de gebruiker.
+                input = Console.ReadLine();
+
+            } while (!(int.TryParse(input, out id)) || !(department.Courses.Exists(c => c.Id == id)));        //TODO uitzoeken hoe dit werkt. Geen idee hoe ik id uit de cursus moet halen om te vergelijken met ingave van de gebruiker.
 
 
-            Console.Clear();
+            //Console.Clear();
+            Console.WriteLine($"{department.Courses.Find(c => c.Id == id).ToString()}");
 
             return department.Courses.Find(c => c.Id == id);
         }
