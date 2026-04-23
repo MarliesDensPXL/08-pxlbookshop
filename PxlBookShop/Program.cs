@@ -170,11 +170,7 @@ namespace PxlBookShop
                     {
                         order.AddBook(book);
                     }
-                }
-                catch (ArgumentNullException ane)
-                {
-                    Console.WriteLine(ane.Message);
-                }
+                }                
                 catch (ArgumentException ae)
                 {
                     Console.WriteLine(ae.Message);

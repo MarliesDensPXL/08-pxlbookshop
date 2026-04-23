@@ -33,12 +33,7 @@ namespace PxlBookShop.Models
 		}
 
 		public void AddBook(Book book)
-		{
-			if (book == null)
-			{
-				throw new ArgumentNullException("Dit boek bestaat niet.");
-			}
-			
+		{			
 			if (Books.Any(b => b.Title == book.Title)) 
 			{
 				throw new ArgumentException("Dit boek zit al in het winkelmandje.");
