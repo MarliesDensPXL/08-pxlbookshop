@@ -50,7 +50,7 @@ namespace PxlBookShop.Models
 				total += book.Price;
 			}
 			decimal discount = total * 0.10m;
-			return discount;
+			return total - discount;
 		}
     }
 }
