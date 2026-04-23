@@ -12,7 +12,9 @@ namespace PxlBookShop.Models
 		private string _email;
 		private int _number;
 
-		public string Email
+        public List<Book> Books { get; set; }
+
+        public string Email
 		{
 			get { return _email; }
 			set { _email = value; }
@@ -25,20 +27,30 @@ namespace PxlBookShop.Models
 			set { _number = value; }
 		}
 
+		public Order()
+		{
+			Books = new List<Book>();
+		}
+
 		public void AddBook(Book book)
 		{
-			if (_books.Any(b => b.Title == book.Title)) 
+			if (book == null)
+			{
+				throw new ArgumentNullException("Dit boek bestaat niet.");
+			}
+			
+			if (Books.Any(b => b.Title == book.Title)) 
 			{
 				throw new ArgumentException("Dit boek zit al in het winkelmandje.");
 			}
 
-			_books.Add(book);
+			Books.Add(book);
 		}
 
 		public decimal CalculateTotalAmount()
 		{
 			decimal total = 0;
-			foreach (Book book in _books)
+			foreach (Book book in Books)
 			{
 				total += book.Price;
 			}

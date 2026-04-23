@@ -164,15 +164,27 @@ namespace PxlBookShop
             if (Console.ReadKey(true).Key == ConsoleKey.Enter)
             {
 
-                foreach (Book book in books)
+                try
                 {
-                    order.AddBook(book);
+                    foreach (Book book in books)
+                    {
+                        order.AddBook(book);
+                    }
                 }
+                catch (ArgumentNullException ane)
+                {
+                    Console.WriteLine(ane.Message);
+                }
+                catch (ArgumentException ae)
+                {
+                    Console.WriteLine(ae.Message);
+                }
+                
 
                 Console.ForegroundColor= ConsoleColor.Green;
                 Console.WriteLine("Je bestelling werd succesvol geregistreerd.");
                 Console.WriteLine($"Er werd een bevestigingsmail verstuurd naar {order.Email}.");
-                Console.WriteLine($"Gelieve het bedrag van {order.CalculateTotalAmount()} te betalen om de bestelling definitief te maken.");
+                Console.WriteLine($"Gelieve het bedrag van {order.CalculateTotalAmount():c} te betalen om de bestelling definitief te maken.");
                 Console.ResetColor();
                 Console.WriteLine();
             }
@@ -236,11 +248,11 @@ namespace PxlBookShop
                 Console.Write("Geef het id van je opleiding: ");
                 input = Console.ReadLine();
 
-            } while (!(int.TryParse(input, out id)) || !(department.Courses.Exists(c => c.Id == id)));        //TODO uitzoeken hoe dit werkt. Geen idee hoe ik id uit de cursus moet halen om te vergelijken met ingave van de gebruiker.
+            } while (!(int.TryParse(input, out id)) || !(department.Courses.Exists(c => c.Id == id)));       
 
 
-            //Console.Clear();
-            Console.WriteLine($"{department.Courses.Find(c => c.Id == id).ToString()}");
+            Console.Clear();
+            //Console.WriteLine($"{department.Courses.Find(c => c.Id == id).ToString()}"); // om te testen
 
             return department.Courses.Find(c => c.Id == id);
         }
